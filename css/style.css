@@ -1,0 +1,626 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Mencegah scroll horizontal yang tidak diinginkan */
+}
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+/* Helper untuk gambar agar selalu responsif dalam wadahnya */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* View Transition */
+@view-transition { navigation: auto; }
+
+/* Navbar */
+.navbar {
+    background: white;
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo-company {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 50%; /* Opsional: membuatnya bulat agar lebih rapi */
+}
+
+.logo-company img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+}
+
+.nav-menu a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    background-color: #f7da58;
+}
+
+/* =========================================
+   BANNER SECTION - DIPERBARUI UNTUK TAMPILAN FULL
+   ========================================= */
+.banner {
+    position: relative;
+    width: 100%;
+    /* Menggunakan viewport height (vh) agar banner terasa penuh */
+    min-height: 85vh; 
+    margin-top: 60px; /* Kompensasi untuk fixed navbar */
+    
+    /* Menggunakan Flexbox untuk memusatkan konten secara vertikal dan horizontal */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    padding: 2rem; /* Padding yang lebih wajar */
+    color: #fff;
+    overflow: hidden;
+}
+
+.banner-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.banner-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    /* PENTING: cover memastikan gambar mengisi area penuh tanpa distorsi, 
+       namun pasti akan ada cropping di sisi tergantung rasio layar */
+    background-size: cover;
+    background-position: center center;
+}
+
+.banner-slide.active {
+    opacity: 1;
+}
+
+.banner-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Overlay sedikit lebih gelap agar teks putih lebih terbaca */
+    background: rgba(0, 0, 0, 0.4);
+    /* Jika ingin overlay oranye seperti di gambar contoh: */
+    /* background: rgba(247, 108, 29, 0.8); mix-blend-mode: multiply; */
+}
+
+.banner-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px; /* Agar teks tidak terlalu melebar di layar besar */
+    width: 100%;
+    transform: translateY(60px);
+}
+
+.banner h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow:
+        0 0 10px rgba(40, 24, 1, 0.539), 
+        0 0 20px rgba(255,255,255,0.4),
+        2px 2px 6px rgba(0,0,0,0.6); 
+}
+
+.banner p {
+    font-size: 1.5rem;
+    color: #fffefb;
+    text-shadow:
+        0 0 6px rgba(40, 24, 1, 0.539),
+        0 0 12px rgba(255,255,255,0.3),
+        1px 1px 4px rgba(0,0,0,0.5);
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.8rem;
+    z-index: 3;
+}
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slider-dot.active {
+    background: #f7da58;
+    transform: scale(1.2); /* Sedikit membesar saat aktif */
+}
+
+/* Section Styling General */
+section {
+    padding: 5rem 2rem; /* Padding standar yang konsisten */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #333;
+    font-weight: 700;
+}
+
+/* Profile Section */
+.profile-banner {
+    position: relative;
+    width: 100%;
+    height: 350px; /* Sedikit lebih tinggi agar lebih proporsional */
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.profile-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-banner-text {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    color: #fff;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); /* Menambah keterbacaan */
+    padding: 1rem;
+    width: 100%;
+    border-bottom-left-radius: 12px;
+}
+
+.profile-banner-text h2 {
+    font-size: 2.2rem;
+    margin-bottom: 0.3rem;
+    text-align: left;
+    color: #fff;
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.about-company h3,
+.vision-mission h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.about-company p {
+    color: #555;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.vision-mission {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.vision p,
+.mission ul {
+    color: #555;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.mission ul {
+    padding-left: 1.5rem;
+}
+
+.mission li {
+    margin-bottom: 0.8rem;
+}
+
+/* Portfolio Section */
+.portfolio-grid {
+    display: grid;
+    /* Menggunakan auto-fit agar kolom menyesuaikan secara otomatis */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+.portfolio-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.portfolio-image {
+    width: 100%;
+    height: 220px;
+    background: #f7da58;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    font-size: 1rem;
+}
+
+/* Pastikan jika ada gambar di dalam portfolio-image, dia mengisi penuh */
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portfolio-content {
+    padding: 1.5rem;
+}
+
+.portfolio-content h3 {
+    color: #333;
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+}
+
+.portfolio-content p {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Message Section */
+.message-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.85rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #f7da58;
+    box-shadow: 0 0 0 3px rgba(247, 218, 88, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap; /* Agar aman di layar kecil */
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: normal;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.submit-btn {
+    background: #f7da58;
+    color: #333;
+    padding: 0.85rem 2.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-block;
+}
+
+.submit-btn:hover {
+    background-color: #e6c84a;
+    transform: translateY(-2px);
+}
+
+.result-panel {
+    background: #f8f9fa;
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.result-panel h3 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.result-item {
+    margin-bottom: 1.2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.result-label {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.4rem;
+    display: block;
+}
+
+.result-value {
+    color: #555;
+    font-size: 1.05rem;
+}
+
+.empty-state {
+    text-align: center;
+    color: #999;
+    padding: 3rem;
+    font-style: italic;
+}
+
+/* Footer */
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+/* Modal Popup */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 1rem; /* Padding agar tidak menempel di sisi layar HP */
+}
+
+.modal-overlay.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.modal-content h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 0.85rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.modal-input:focus {
+    outline: none;
+    border-color: #f7da58;
+}
+
+.modal-btn {
+    background: #f7da58;
+    color: #333;
+    padding: 0.85rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.modal-btn:hover {
+    background-color: #e6c84a;
+}
+
+.modal-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* =========================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================= */
+
+/* Tablet (max-width: 992px) */
+@media (max-width: 992px) {
+    section h2 {
+        font-size: 2.2rem;
+    }
+
+    .vision-mission,
+    .message-container {
+        grid-template-columns: 1fr; /* Stack menjadi 1 kolom */
+        gap: 2.5rem;
+    }
+
+    .profile-banner {
+        height: 280px;
+    }
+}
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    /* Pada mobile, mungkin kita ingin menu menjadi hamburger (membutuhkan JS),
+       atau kita bisa membuatnya wrap */
+    .nav-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .nav-menu {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .nav-menu a {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.8rem;
+    }
+
+    /* Penyesuaian Banner di Mobile */
+    .banner {
+        min-height: 60vh; /* Tinggi sedikit berkurang di HP */
+        padding: 3rem 1rem;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .profile-banner-text h2 {
+        font-size: 1.5rem;
+    }
+
+    .radio-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+
+    .submit-btn {
+        width: 100%; /* Tombol full width di HP lebih mudah ditekan */
+    }
+}

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RevoU</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+</head>
+
+<body>
+    <div id="nameModal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>Welcome Revoneers! 👋</h2>
+            <p style="margin-bottom: 1.5rem; color: #666;">Tell us your name so we can personalize your experience.</p>
+            <input type="text" id="nameInput" class="modal-input" placeholder="Enter your name...">
+            <button id="submitName" class="modal-btn">Continue</button>
+        </div>
+    </div>
+
+    <nav class="navbar">
+         <div class="nav-container">
+            <div class="nav-logo">
+              <div class="logo-company">
+                  <img src="images/RevoU-logo.avif" alt="RevoU Logo"> 
+              </div><span>RevoU</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#ourProfile" class="nav-link">Our Profile</a></li>
+                <li><a href="#portfolio" class="nav-link">Portofolio</a></li>
+                <li><a href="#message" class="nav-link">Message Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="banner">
+        <div class="banner-slider">
+            <div class="banner-slide active" style="background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),url('../images/banner-1.jpg');"></div>
+            <div class="banner-slide"style="background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),url('../images/banner-2.jpg');"></div>
+            <div class="banner-slide" style="background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),url('../images/banner-3.jpg');"></div>
+        </div>
+        <div class="banner-content">
+            <h1 id="bannerTitle">Hi Revoneers, Welcome To Website</h1>
+            <p id="bannerSubtitle">Great to have you here! Explore our programs and start your learning journey with us.</p>
+        </div>
+        <div class="slider-dots">
+            <span class="slider-dot active" data-slide="0"></span>
+            <span class="slider-dot" data-slide="1"></span>
+            <span class="slider-dot" data-slide="2"></span>
+        </div>
+    </section>
+
+    <!-- OUR PROFILE SECTION -->
+<section id="ourProfile" class="profile-section">
+    <div class="profile-banner">
+        <img src="images/banner-web.avif" alt="Company Banner">
+    </div>
+
+    <div class="profile-content">
+        <div class="about-company">
+            <h3>About The Company</h3>
+            <p>
+                RevoU is a digital education institution focused on improving job-ready skills. We provide intensive 
+                programs that connect participants with real-world experiences and curricula designed by industry experts. 
+                Our mission is to develop high-quality digital talent to meet the challenges of the modern workplace.
+            </p>
+        </div>
+
+        <div class="vision-mission">
+            <div class="vision">
+                <h3>Vision</h3>
+                <p>
+                    To become the most influential technology education center in Southeast Asia by producing a generation 
+                    of competent and professional digital talents.
+                </p>
+            </div>
+            <div class="mission">
+                <h3>Mission</h3>
+                <ul>
+                    <li>Providing high-quality education that is relevant to industry needs.</li>
+                    <li>Helping participants build careers through real-world projects and mentoring.</li>
+                    <li>Promote an inclusive and results-oriented educational ecosystem.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="portfolio">
+        <h2 id="portfolioTitle">Portofolio</h2>
+        <div class="portfolio-grid">
+            <a href="https://www.revou.co/portfolio/improve-user-experience-in-bnc-app" class="portfolio-card">
+                <div class="portfolio-image">
+                    <img src="images/portofolio-bankneo.png" alt="Bank Neo Commerce">
+                </div>
+                <div class="portfolio-content">
+                    <h3>Bank Neo Commerce</h3>
+                    <p>Bank Neo Commerce (BNC) is a bank that is committed to making your financial journey hassle-free. With innovation at its heart, BNC simplifies banking, making it seamless and personal to you!</p>
+                </div>
+            </a>
+            <a href="https://www.revou.co/portfolio/sales-performance-dashboard-telkom-indonesia" class="portfolio-card">
+                <div class="portfolio-image">
+                    <img src="images/portofolio-telkom.png" alt="Telkom Indonesia">
+                </div>
+                <div class="portfolio-content">
+                    <h3>Sales Performance Dashboard Telkom Indonesia</h3>
+                    <p>Telkom Indonesia, Indonesia's largest telecommunication service, has launched a marketplace initiative to support UMKM growth. For this project, the company's dataset and name have been anonymized as XYZ UMKM, presenting a unique challenge for our alumni.</p>
+                </div>
+            </a>
+            <a href="https://www.revou.co/portfolio/enhance-zurich-financial-stability-through-data-analysis" class="portfolio-card">
+                <div class="portfolio-image">
+                     <img src="images/portofolio-zurich.png" alt="Zurich Insurance Group">
+                </div>
+                <div class="portfolio-content">
+                    <h3>Enhance Zurich Financial Stability through Data Analysis</h3>
+                    <p>‍Zurich Insurance Group is a titan in the insurance industry, renowned for its commitment to delivering exceptional service to customers both locally and globally. As a leading provider, Zurich is dedicated to maintaining and enhancing the security and financial stability of its diverse clientele.</p>
+                </div>
+            </a>
+            <a href="https://www.revou.co/portfolio/transform-astro's-performance-monitoring" class="portfolio-card">
+                <div class="portfolio-image">
+                    <img src="images/portofolio-astro.png" alt="Astro">
+                </div>
+                <div class="portfolio-content">
+                    <h3>Transform Astro's Performance Monitoring</h3>
+                    <p>Astro is an online quick-commerce platform offering more than 1,000 high-quality goods. They are ready to deliver your groceries in minutes and are open 24/7.</p>
+                </div>
+            </a>
+            <a href="https://www.revou.co/portfolio/less-churn%2C-more-loyalty-for-umkm" class="portfolio-card">
+                <div class="portfolio-image">
+                    <img src="images/portofolio-umkm.png" alt="UMKM Telkom Indonesia">
+                </div>
+                <div class="portfolio-content">
+                    <h3>Less Churn, More Loyalty for UMKM</h3>
+                    <p>UMKM is a dynamic marketplace, an initiative of Telkom Indonesia. This innovative digital platform is dedicated to connecting SMEs with state-owned enterprises (BUMNs), facilitating an efficiency and accelerated transactions to optimize shopping process for BUMNs and SMEs.</p>
+                </div>
+            </a>
+            <a href="https://www.revou.co/portfolio/10x-seo-article-production-with-ai" class="portfolio-card">
+                <div class="portfolio-image">
+                    <img src="images/portofolio-seo.png" alt="SEO Article Production with AI">
+                </div>
+                <div class="portfolio-content">
+                    <h3>10X SEO Article Production with AI</h3>
+                    <p>In this project, students were tasked with creating SEO strategies and crafting educational articles targeted at beginners in their respective fields. The articles were designed to provide valuable insights and guidance while adhering to ethical content practices, such as proper crediting of original sources and avoiding plagiarism.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="message">
+        <h2 id="messageTitle">Message Us</h2>
+        <div class="message-container">
+            <form id="messageForm">
+                <div class="form-group">
+                    <label for="nama">Name</label>
+                    <input type="text" id="nama" name="nama" required>
+                </div>
+                <div class="form-group">
+                    <label for="tanggalLahir">Date of Birth</label>
+                    <input type="date" id="tanggalLahir" name="tanggalLahir" required>
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="jenisKelamin" value="Laki-laki" required> Male</label>
+                        <label><input type="radio" name="jenisKelamin" value="Perempuan" required> Female</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pesan">Message</label>
+                    <textarea id="pesan" name="pesan" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+            <div class="result-panel">
+                <h3>Input Result</h3>
+                <div id="resultContent" class="empty-state">
+                    The form has not been filled out. Please fill out the form on the left.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p id="footerText">Created By Indriyana Nova T.</p>
+    </footer>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>
